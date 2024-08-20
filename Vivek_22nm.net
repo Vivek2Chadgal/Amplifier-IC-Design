@@ -1,0 +1,44 @@
+* C:\Users\shash\OneDrive\Desktop\LTSpice\Vivek_22nm.asc
+M1 N002 N004 0 0 NMOS l=44n w=220n
+M2 Vdd N002 N002 Vdd PMOS l=440n w=220n
+M3 V_beta N002 N004 N004 NMOS l=44n w=88n
+M4 Vdd V_beta N004 Vdd PMOS l=44n w=528n
+M5 N004 N004 0 0 NMOS l=44n w=220n
+M6 Vdd N001 N001 Vdd PMOS l=44n w=528n
+M7 N001 N003 0 0 NMOS l=44n w=220n
+M8 Vdd N001 V_beta Vdd PMOS l=44n w=528n
+M9 V_beta N004 0 0 NMOS l=44n w=220n
+M10 Vdd V_beta N003 Vdd PMOS l=44n w=528n
+M11 N003 N003 N005 N005 NMOS l=44n w=660n
+R1 N005 0 5.5k
+M12 Vdd V_beta Vdd Vdd PMOS l=1100n w=1100n
+V1 Vdd 0 0.8
+M13 Vdd V_beta V_bias3 Vdd PMOS l=44n w=528n
+M14 Vdd V_beta N009 Vdd PMOS l=44n w=528n
+M15 V_bias3 V_bias3 0 0 NMOS l=44n w=110n
+M16 N009 V_bias3 N012 N012 NMOS l=44n w=220n
+M17 N012 N009 0 0 NMOS l=44n w=220n
+M18 V_bias2 V_bias3 N013 N013 NMOS l=44n w=220n
+M19 N013 N009 0 0 NMOS l=44n w=220n
+M20 Vdd V_bias2 V_bias2 Vdd PMOS l=110n w=440n
+M21 N008 V_bias2 V_bias1 N008 PMOS l=44n w=528n
+M22 V_bias1 V_bias3 N011 N011 NMOS l=44n w=220n
+M23 N011 N009 0 0 NMOS l=44n w=220n
+M24 Vdd V_bias1 N008 Vdd PMOS l=44n w=528n
+M25 Vout V_bias3 N010 N010 NMOS l=44n w=242n
+M26 N010 N014 0 0 NMOS l=44n w=242n
+M27 N006 V_bias2 Vout N006 PMOS l=44n w=550n
+M28 Vdd V_bias1 N006 Vdd PMOS l=44n w=550n
+C1 Vout 0 1e-12
+V2 N014 0 SINE(578.5m 10m 50K) AC 1
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\Users\shash\AppData\Local\LTspice\lib\cmp\standard.mos
+;tran 100u
+.lib "22nm.txt"
+* Beta Multiplier
+* Cascode Current Mirror
+;tran 1
+.ac dec 100 100 1Meg
+.backanno
+.end
